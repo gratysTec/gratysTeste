@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Notícias - Feed Principal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fafafa;
+      color: #262626;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #dbdbdb;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 935px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    /* Feed Centralizado */
+    .main-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 0 10px;
+    }
+
+    /* Post Estilo Card Feed */
+    .post-card {
+      background: #ffffff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .post-header {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .post-category {
+      background-color: #e7f1ff;
+      color: #0d6efd;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .post-date {
+      font-size: 12px;
+      color: #8e8e8e;
+    }
+
+    .post-image {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .post-body {
+      padding: 16px;
+    }
+
+    .post-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .post-content {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4a4a4a;
+    }
+
+    .empty-feed {
+      text-align: center;
+      padding: 50px 20px;
+      color: #8e8e8e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">Portal Corporativo</div>
+      <a href="admin.html" style="color: #0d6efd; text-decoration: none; font-weight: 600;">Painel Admin</a>
+    </div>
+  </header>
+
+  <main class="main-container" id="feedContainer">
+    <!-- As notícias publicadas pelo admin vão carregar dinamicamente aqui -->
+  </main>
+
+  <script>
+    function loadPosts() {
+      const feedContainer = document.getElementById('feedContainer');
+      const posts = JSON.parse(localStorage.getItem('portal_posts') || '[]');
+
+      if (posts.length === 0) {
+        feedContainer.innerHTML = `
+          <div class="empty-feed">
+            <h3>Nenhuma notícia publicada ainda.</h3>
+            <p>Acesse o painel do administrador para criar novas postagens.</p>
+          </div>
+        `;
+        return;
+      }
+
+      feedContainer.innerHTML = posts.map(post => `
+        <article class="post-card">
+          <div class="post-header">
+            <span class="post-category">${post.category}</span>
+            <span class="post-date">${post.date}</span>
+          </div>
+          <img src="${post.image}" alt="${post.title}" class="post-image" onerror="this.src='https://via.placeholder.com/600x400?text=Imagem+Indisponivel'">
+          <div class="post-body">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-content">${post.content}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Carregar os posts ao abrir a página
+    document.addEventListener('DOMContentLoaded', loadPosts);
+  </script>
+</body>
+</html>

@@ -124,10 +124,10 @@ Caso receba erro 404 ao navegar entre as páginas:
 | Parâmetro | Valor Padrão |
 | :--- | :--- |
 | **Host** | `localhost` |
-| **Porta** | `3306` |
+| **Porta** | `3307` |
 | **Banco de Dados** | `ifolha` |
 | **Usuário** | `root` |
-| **Senha** | *(em branco / vazio)* |
+| **Senha** |  `d3sg4c4!gratys`  |
 
 ---
 

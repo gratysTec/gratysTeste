@@ -1,0 +1,2094 @@
+/* =========================================================
+   IFOLHA
+   Jornal digital — IFMT Campus Cáceres
+   Desenvolvido por GRATYS TECH
+========================================================= */
+
+:root {
+
+    --verde-escuro: #173f2b;
+    --verde-profundo: #0d291c;
+    --verde: #286b48;
+    --verde-medio: #4f956b;
+    --verde-claro: #a9d5b7;
+    --verde-palido: #dcefe1;
+
+    --creme: #fffef0;
+    --papel: #fffdf4;
+    --papel-amarelado: #f7f0d8;
+
+    --rosa: #f4bfd4;
+    --rosa-claro: #f8dce8;
+
+    --amarelo: #fff29a;
+
+    --texto: #26342b;
+    --cinza: #68736b;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    color: var(--texto);
+
+    font-family: "Shantell Sans", sans-serif;
+
+    background-color: var(--verde-palido);
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.25),
+            rgba(255,255,255,.25)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 27px,
+            rgba(40,107,72,.08) 28px
+        ),
+        radial-gradient(
+            rgba(40,107,72,.12) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        auto,
+        auto,
+        18px 18px;
+
+    padding-bottom: 45px;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+::selection {
+    background: var(--verde);
+    color: white;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
+
+.top-marquee {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    border-bottom: 3px solid var(--verde-profundo);
+
+    padding: 7px 0;
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .7rem;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.page-wrapper {
+
+    width: min(1120px, calc(100% - 30px));
+
+    margin: 28px auto 0;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.newspaper-header {
+
+    position: relative;
+
+    background: var(--creme);
+
+    border: 2px solid #9bc9ac;
+
+    border-radius: 0 0 14px 14px;
+
+    padding: 0 30px 22px;
+
+    text-align: center;
+
+    overflow: visible;
+
+    margin-bottom: 30px;
+}
+
+
+.newspaper-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            rgba(23,63,43,.09) .8px,
+            transparent .8px
+        );
+
+    background-size: 9px 9px;
+
+    opacity: .45;
+}
+
+
+.header-meta {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 8px;
+
+    border-bottom: 1px dashed var(--verde-claro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .75rem;
+
+    font-weight: bold;
+
+    color: var(--verde-escuro);
+}
+
+
+.edition-stamp {
+
+    color: #df91b2;
+
+    border: 2px dashed #e4a0bb;
+
+    padding: 6px 12px;
+
+    transform: rotate(-3deg);
+
+    letter-spacing: .08em;
+}
+
+
+.company-name {
+
+    color: #d3a55b;
+
+    font-size: .85rem;
+}
+
+
+/* =========================================================
+   FITAS
+========================================================= */
+
+.tape {
+
+    position: absolute;
+
+    width: 125px;
+    height: 26px;
+
+    background: rgba(255, 236, 167, .8);
+
+    border: 1px dashed #c4b36a;
+
+    z-index: 5;
+}
+
+
+.tape-left {
+
+    top: -12px;
+    left: 40px;
+
+    transform: rotate(-5deg);
+}
+
+
+.tape-right {
+
+    top: -12px;
+    right: 40px;
+
+    transform: rotate(5deg);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-decoration {
+
+    position: relative;
+
+    margin-top: 18px;
+
+    color: var(--verde-medio);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .72rem;
+}
+
+
+.blog-title {
+
+    position: relative;
+
+    margin: 8px 0;
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(3rem, 7vw, 5.5rem);
+
+    font-weight: 900;
+
+    letter-spacing: -.07em;
+
+    line-height: 1;
+
+    text-shadow:
+        5px 4px 0 var(--rosa),
+        8px 7px 0 rgba(169,213,183,.45);
+}
+
+
+.blog-subtitle {
+
+    position: relative;
+
+    margin-bottom: 18px;
+
+    color: var(--verde);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .9rem;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+.nav-bar {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding-top: 10px;
+}
+
+
+.nav-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    background: var(--papel);
+
+    color: var(--verde-escuro);
+
+    border: 3px solid var(--verde-escuro);
+
+    border-radius: 40px;
+
+    padding: 10px 18px;
+
+    font-family: "Shantell Sans", sans-serif;
+
+    font-size: .8rem;
+
+    font-weight: 700;
+
+    box-shadow: 5px 5px 0 var(--verde-escuro);
+
+    transition: .15s ease;
+}
+
+
+.nav-btn:hover {
+
+    background: var(--rosa-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow: 6px 6px 0 var(--verde-escuro);
+}
+
+
+.nav-btn.active {
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    box-shadow:
+        5px 5px 0 var(--rosa);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-content {
+
+    min-height: 600px;
+}
+
+
+.layout-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(280px, .9fr);
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+
+.main-column {
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   POSTS
+========================================================= */
+
+.post-box {
+
+    position: relative;
+
+    background: var(--papel);
+
+    border: 3px solid var(--verde-escuro);
+
+    padding: 25px 28px;
+
+    margin-bottom: 27px;
+
+    box-shadow:
+        7px 7px 0 var(--verde-escuro);
+
+    transition: .18s ease;
+}
+
+
+.post-box:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        9px 9px 0 var(--verde-escuro);
+}
+
+
+.featured-post {
+
+    transform: rotate(-.25deg);
+}
+
+
+.featured-post:hover {
+
+    transform: rotate(0) translateY(-2px);
+}
+
+
+.paper-tape {
+
+    position: absolute;
+
+    top: -14px;
+
+    left: 38%;
+
+    width: 120px;
+
+    height: 25px;
+
+    background: rgba(255,236,168,.85);
+
+    border: 1px dashed #b8a75d;
+
+    transform: rotate(-2deg);
+}
+
+
+.post-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-bottom: 9px;
+
+    margin-bottom: 15px;
+
+    border-bottom: 1px dotted var(--verde);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .68rem;
+}
+
+
+.post-category {
+
+    color: var(--verde);
+
+    font-weight: bold;
+}
+
+
+.post-date {
+
+    color: var(--cinza);
+}
+
+
+.post-box h2 {
+
+    margin-bottom: 14px;
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+
+    line-height: 1.1;
+}
+
+
+.post-box p {
+
+    margin-bottom: 12px;
+
+    font-size: .95rem;
+
+    line-height: 1.8;
+}
+
+
+.info-tip {
+
+    margin-top: 20px;
+
+    padding: 12px 15px;
+
+    background: #c8e6ca;
+
+    border-left: 4px solid var(--verde);
+
+    border-radius: 0 8px 8px 0;
+
+    color: #3d5145;
+
+    font-size: .8rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RODAPÉ DOS POSTS
+========================================================= */
+
+.post-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    padding-top: 12px;
+
+    border-top: 1px dashed var(--verde);
+
+    color: var(--cinza);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .68rem;
+}
+
+
+/* =========================================================
+   CURTIR
+========================================================= */
+
+.like-btn {
+
+    background: var(--papel);
+
+    color: var(--verde-escuro);
+
+    border: 2px solid var(--verde-escuro);
+
+    padding: 6px 11px;
+
+    cursor: pointer;
+
+    font-family: "Courier Prime", monospace;
+
+    font-weight: bold;
+
+    box-shadow: 3px 3px 0 var(--verde-escuro);
+
+    transition: .15s ease;
+}
+
+
+.like-btn:hover {
+
+    background: var(--rosa-claro);
+
+    transform: translate(-1px, -1px);
+}
+
+
+.like-btn.liked {
+
+    background: var(--rosa);
+
+    color: #8f3159;
+
+    transform: translate(2px, 2px);
+
+    box-shadow: 1px 1px 0 var(--verde-escuro);
+}
+
+
+/* =========================================================
+   QUADRO DE LINKS
+========================================================= */
+
+.links-board {
+
+    position: relative;
+
+    padding: 22px;
+
+    margin-top: 5px;
+
+    background: var(--papel-amarelado);
+
+    border: 3px dashed var(--verde-escuro);
+
+    box-shadow: 6px 6px 0 var(--verde-claro);
+}
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.section-title span {
+
+    color: var(--verde);
+
+    font-size: 1rem;
+}
+
+
+.section-title h3 {
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .9rem;
+}
+
+
+.section-subtitle {
+
+    margin: 7px 0 18px;
+
+    color: var(--cinza);
+
+    text-align: center;
+
+    font-size: .7rem;
+
+    font-style: italic;
+}
+
+
+.stickers-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 13px;
+}
+
+
+.sticker-card {
+
+    min-height: 115px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px;
+
+    background: var(--verde-palido);
+
+    color: var(--verde-escuro);
+
+    border: 2px solid var(--verde-escuro);
+
+    box-shadow: 4px 4px 0 var(--verde);
+
+    text-align: center;
+
+    transition: .15s ease;
+}
+
+
+.sticker-card:nth-child(1) {
+    transform: rotate(-1deg);
+}
+
+
+.sticker-card:nth-child(2) {
+    transform: rotate(1deg);
+}
+
+
+.sticker-card:nth-child(3) {
+    transform: rotate(1deg);
+}
+
+
+.sticker-card:nth-child(4) {
+    transform: rotate(-1deg);
+}
+
+
+.sticker-card:nth-child(5) {
+
+    grid-column: 1 / -1;
+
+    transform: rotate(.5deg);
+}
+
+
+.sticker-card:hover {
+
+    background: var(--verde-claro);
+
+    transform: translateY(-4px) rotate(0);
+}
+
+
+.sticker-icon {
+
+    font-size: 1.7rem;
+
+    margin-bottom: 6px;
+}
+
+
+.sticker-card strong {
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .78rem;
+}
+
+
+.sticker-card small {
+
+    margin-top: 4px;
+
+    color: var(--cinza);
+
+    font-size: .63rem;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+
+.postit-box {
+
+    position: relative;
+
+    padding: 28px 20px 20px;
+
+    background: #fff39b;
+
+    border: 3px solid var(--verde-escuro);
+
+    box-shadow: 7px 7px 0 var(--verde-escuro);
+
+    transform: rotate(.8deg);
+}
+
+
+.postit-box h3 {
+
+    margin-bottom: 7px;
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: 1.35rem;
+
+    text-align: center;
+}
+
+
+.pin {
+
+    position: absolute;
+
+    top: -18px;
+
+    left: 50%;
+
+    font-size: 1.2rem;
+}
+
+
+.suap-badge {
+
+    position: absolute;
+
+    top: 55px;
+
+    right: 20px;
+
+    padding: 4px 8px;
+
+    background: var(--rosa);
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .6rem;
+
+    font-weight: bold;
+}
+
+
+.small-text {
+
+    margin-bottom: 18px;
+
+    color: #68613b;
+
+    text-align: center;
+
+    font-size: .73rem;
+}
+
+
+.form-group {
+
+    margin-bottom: 13px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #4e4a2d;
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .7rem;
+
+    font-weight: bold;
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 11px;
+
+    background: rgba(255,255,255,.8);
+
+    border: 2px solid var(--verde-escuro);
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+
+.form-group input:focus {
+
+    border-color: var(--verde);
+
+    box-shadow: 0 0 0 2px var(--verde-claro);
+}
+
+
+.btn-retro {
+
+    width: 100%;
+
+    margin-top: 4px;
+
+    padding: 10px;
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    border: 2px solid var(--verde-profundo);
+
+    cursor: pointer;
+
+    font-family: "Courier Prime", monospace;
+
+    font-weight: bold;
+
+    box-shadow: 4px 4px 0 var(--verde);
+
+    transition: .15s ease;
+}
+
+
+.btn-retro:hover {
+
+    transform: translate(-2px,-2px);
+
+    box-shadow: 6px 6px 0 var(--verde);
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box {
+
+    background: var(--papel-amarelado);
+}
+
+
+.sidebar-title {
+
+    margin-bottom: 8px;
+
+    color: var(--verde);
+
+    text-align: center;
+
+    font-size: .75rem;
+}
+
+
+.info-box p {
+
+    color: var(--cinza);
+
+    font-size: .75rem;
+
+    line-height: 1.7;
+}
+
+
+.info-box span {
+
+    color: var(--verde);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .67rem;
+
+    line-height: 2;
+}
+
+
+.info-divider {
+
+    margin: 10px 0;
+
+    color: var(--verde-claro);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+.content-section {
+
+    scroll-margin-top: 20px;
+
+    margin-top: 50px;
+
+    padding-top: 15px;
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+    padding: 15px 20px;
+
+    background: var(--creme);
+
+    border: 2px solid var(--verde-escuro);
+
+    box-shadow: 5px 5px 0 var(--verde);
+
+    transform: rotate(-.3deg);
+}
+
+
+.section-heading > span {
+
+    font-size: 2rem;
+}
+
+
+.section-heading h2 {
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: 2rem;
+}
+
+
+.section-heading p {
+
+    color: var(--cinza);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .7rem;
+}
+
+
+/* =========================================================
+   EVENTOS
+========================================================= */
+
+.event-post {
+
+    border: 5px double var(--verde-escuro);
+}
+
+
+.event-stamp {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 22px;
+
+    padding: 5px 8px;
+
+    border: 2px solid var(--verde);
+
+    color: var(--verde);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .58rem;
+
+    font-weight: bold;
+
+    transform: rotate(5deg);
+}
+
+
+.event-info {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+
+.event-info-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    padding: 11px;
+
+    background: var(--verde-palido);
+
+    border: 2px dashed var(--verde-medio);
+}
+
+
+.event-info-item > span {
+
+    font-size: 1.1rem;
+}
+
+
+.event-info-item div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.event-info-item strong {
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .58rem;
+}
+
+
+.event-info-item small {
+
+    color: var(--cinza);
+
+    font-size: .65rem;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    margin-top: 50px;
+
+    background: var(--creme);
+
+    border: 3px solid var(--verde-escuro);
+
+    box-shadow: 7px 7px 0 var(--verde-escuro);
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.footer-decoration {
+
+    padding: 10px;
+
+    background: var(--verde-escuro);
+
+    color: var(--verde-claro);
+
+    font-family: "Courier Prime", monospace;
+}
+
+
+.footer-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    padding: 25px;
+}
+
+
+.footer-info h3 {
+
+    margin-bottom: 8px;
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: 1.4rem;
+}
+
+
+.footer-team h4 {
+
+    margin-bottom: 8px;
+
+    color: var(--verde);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .8rem;
+}
+
+
+.footer-info p,
+.footer-team p {
+
+    color: var(--cinza);
+
+    font-size: .7rem;
+
+    line-height: 1.7;
+}
+
+
+.footer-bottom {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    padding: 12px;
+
+    background: var(--verde-palido);
+
+    border-top: 2px dashed var(--verde);
+
+    color: var(--cinza);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .6rem;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .layout-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sidebar-column {
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+
+    .event-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .page-wrapper {
+
+        width: calc(100% - 18px);
+
+        margin-top: 18px;
+
+    }
+
+
+    .newspaper-header {
+
+        padding: 0 14px 18px;
+
+    }
+
+
+    .header-meta {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+
+    .tape,
+    .doodle {
+
+        display: none;
+
+    }
+
+
+    .blog-title {
+
+        font-size: 3rem;
+
+    }
+
+
+    .blog-subtitle {
+
+        font-size: .7rem;
+
+    }
+
+
+    .nav-btn {
+
+        padding: 8px 10px;
+
+        font-size: .65rem;
+
+    }
+
+
+    .post-box {
+
+        padding: 20px 17px;
+
+    }
+
+
+    .post-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .post-footer {
+
+        align-items: flex-start;
+
+    }
+
+
+    .stickers-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .sticker-card:nth-child(5) {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .sidebar-column {
+
+        display: flex;
+
+    }
+
+
+    .footer-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .stickers-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sticker-card:nth-child(5) {
+
+        grid-column: auto;
+
+    }
+
+
+    .blog-title {
+
+        font-size: 2.4rem;
+
+    }
+
+}
+
+/*REGRAS!!!!!!!!!!!!!!!!!!!!!!!*/
+/* =========================================================
+   PÁGINA DE REGRAS
+========================================================= */
+
+.rules-page {
+
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+
+    padding-bottom: 20px;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.rules-header {
+
+    position: relative;
+
+    margin-bottom: 25px;
+
+    padding: 28px 25px;
+
+    background: var(--creme);
+
+    border: 3px solid var(--verde-escuro);
+
+    text-align: center;
+
+    box-shadow: 7px 7px 0 var(--verde);
+
+    transform: rotate(-.3deg);
+}
+
+
+.rules-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border: 1px dashed var(--verde-claro);
+
+    pointer-events: none;
+}
+
+
+.rules-header-decoration {
+
+    position: relative;
+
+    color: var(--verde-medio);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .8rem;
+
+    letter-spacing: .15em;
+}
+
+
+.rules-label {
+
+    position: relative;
+
+    display: inline-block;
+
+    margin: 15px 0 8px;
+
+    padding: 5px 10px;
+
+    background: var(--rosa);
+
+    color: var(--verde-escuro);
+
+    border: 2px solid var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .65rem;
+
+    font-weight: bold;
+
+    transform: rotate(-2deg);
+}
+
+
+.rules-header h1 {
+
+    position: relative;
+
+    margin: 5px 0 7px;
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(2.4rem, 6vw, 4rem);
+
+    line-height: 1;
+
+    text-shadow: 4px 3px 0 var(--rosa);
+}
+
+
+.rules-header p {
+
+    position: relative;
+
+    color: var(--cinza);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .78rem;
+}
+
+
+/* =========================================================
+   INTRODUÇÃO
+========================================================= */
+
+.rules-intro {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+
+    padding: 16px 20px;
+
+    background: var(--verde-palido);
+
+    border-left: 5px solid var(--verde);
+
+    box-shadow: 4px 4px 0 var(--verde-claro);
+
+    font-size: .82rem;
+
+    line-height: 1.7;
+}
+
+
+.rules-intro > span {
+
+    font-size: 1.8rem;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARTÕES
+========================================================= */
+
+.rules-card {
+
+    position: relative;
+
+    margin-bottom: 32px;
+
+    padding: 25px;
+
+    background: var(--papel);
+
+    border: 3px solid var(--verde-escuro);
+
+    box-shadow: 7px 7px 0 var(--verde-escuro);
+}
+
+
+.rules-card:nth-of-type(even) {
+
+    transform: rotate(.25deg);
+}
+
+
+.rules-card:nth-of-type(odd) {
+
+    transform: rotate(-.25deg);
+}
+
+
+/* =========================================================
+   CABEÇALHO DOS CARTÕES
+========================================================= */
+
+.rules-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 13px;
+
+    border-bottom: 2px dashed var(--verde-claro);
+}
+
+
+.rules-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 58px;
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    background: var(--verde-palido);
+
+    border: 2px solid var(--verde-escuro);
+
+    font-size: 1.7rem;
+
+    transform: rotate(-3deg);
+}
+
+
+.rules-number {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--verde-medio);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .58rem;
+
+    font-weight: bold;
+
+    letter-spacing: .1em;
+}
+
+
+.rules-card h2 {
+
+    color: var(--verde-escuro);
+
+    font-family: Georgia, serif;
+
+    font-size: 1.9rem;
+}
+
+
+/* =========================================================
+   LISTA DE REGRAS
+========================================================= */
+
+.rules-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.rule-item {
+
+    display: grid;
+
+    grid-template-columns: 24px 1fr;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    background: rgba(220,239,225,.55);
+
+    border: 1px solid var(--verde-claro);
+
+    transition: .15s ease;
+}
+
+
+.rule-item:hover {
+
+    background: var(--verde-palido);
+
+    transform: translateX(3px);
+}
+
+
+.rule-bullet {
+
+    color: var(--verde);
+
+    font-size: 1rem;
+
+    padding-top: 2px;
+}
+
+
+.rule-item h3 {
+
+    margin-bottom: 4px;
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .82rem;
+
+    font-weight: bold;
+}
+
+
+.rule-item p {
+
+    color: var(--texto);
+
+    font-size: .8rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CORES ESPECÍFICAS
+========================================================= */
+
+.rights-card {
+
+    background: #f9fff5;
+}
+
+
+.rights-card .rules-icon {
+
+    background: #d9f0d9;
+}
+
+
+.duties-card {
+
+    background: #fffef2;
+}
+
+
+.duties-card .rules-icon {
+
+    background: #fff0a8;
+}
+
+
+.prohibitions-card {
+
+    background: #fff7f7;
+
+    border-color: #5a2835;
+}
+
+
+.prohibitions-card .rules-icon {
+
+    background: var(--rosa-claro);
+}
+
+
+.prohibitions-card .rule-item {
+
+    background: rgba(247,220,231,.35);
+
+    border-color: #e4b4c7;
+}
+
+
+.prohibitions-card .rule-bullet {
+
+    color: #b04c70;
+}
+
+
+.consequences-card {
+
+    background: var(--papel-amarelado);
+}
+
+
+.consequences-card .rules-icon {
+
+    background: var(--rosa);
+}
+
+
+/* =========================================================
+   CONSEQUÊNCIAS
+========================================================= */
+
+.consequences-intro {
+
+    margin-bottom: 17px;
+
+    padding: 12px 15px;
+
+    background: #fff2a6;
+
+    border-left: 4px solid var(--verde);
+
+    font-size: .8rem;
+
+    line-height: 1.6;
+}
+
+
+.consequences-list {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.consequence-item {
+
+    padding: 17px 13px;
+
+    background: var(--creme);
+
+    border: 2px solid var(--verde-escuro);
+
+    text-align: center;
+
+    box-shadow: 3px 3px 0 var(--verde);
+}
+
+
+.consequence-number {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    margin-bottom: 8px;
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .65rem;
+
+    font-weight: bold;
+}
+
+
+.consequence-item h3 {
+
+    margin-bottom: 7px;
+
+    color: var(--verde-escuro);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .8rem;
+}
+
+
+.consequence-item p {
+
+    color: var(--cinza);
+
+    font-size: .7rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   BOTÃO VOLTAR
+========================================================= */
+
+.rules-back {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin: 40px 0 10px;
+}
+
+
+.back-button {
+
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    border: 2px solid var(--verde-profundo);
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: .7rem;
+
+    font-weight: bold;
+
+    box-shadow: 4px 4px 0 var(--rosa);
+
+    transition: .15s ease;
+}
+
+
+.back-button:hover {
+
+    color: white;
+
+    background: var(--verde);
+
+    transform: translate(-2px, -2px);
+
+    box-shadow: 6px 6px 0 var(--rosa);
+}
+
+
+/* =========================================================
+   RESPONSIVO — REGRAS
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .rules-page {
+
+        width: 100%;
+    }
+
+
+    .rules-header {
+
+        padding: 23px 16px;
+    }
+
+
+    .rules-card {
+
+        padding: 19px;
+    }
+
+
+    .rules-card h2 {
+
+        font-size: 1.55rem;
+    }
+
+
+    .consequences-list {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .rules-intro {
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .rules-card-header {
+
+        align-items: flex-start;
+    }
+
+
+    .rules-icon {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 1.4rem;
+    }
+
+
+    .rules-header h1 {
+
+        font-size: 2.4rem;
+    }
+
+
+    .rule-item {
+
+        grid-template-columns: 18px 1fr;
+
+        padding: 11px;
+    }
+
+}
